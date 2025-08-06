@@ -5,6 +5,15 @@ STREAM-PRS (**S**treamlined **T**oolkit for **R**eliable **E**valuation and **A*
 3. PC-correction and standardization of the obtained PRS for all tools.
 4. Selection of the best PRS per tool and overall
 
+**G**ene-**S**et e**X**tension: \
+STREAM-PRS now supports biologically informed PRS via a gene-set-based extension. This enables calculation of pathway-specific PRS using gene sets defined by KEGG, REACTOME, GO, miRNA targets, co-expression, and more.
+It performs:
+1. SNP extraction based on gene boundaries with customizable upstream/downstream padding
+2. Gene-set-specific PRS calculation using PRSice-2, PRS-CS, LDpred2, lassosum, lassosum2, and PRSet
+3. PC-correction and standardization of all gene-set PRS (as in the original STREAM-PRS)
+4. Regression analysis (as in the original STREAM-PRS)
+5. Visualization of results, including multiset bar plots and more
+
 ## Getting started
 
 ### Clone repository and install conda environment
@@ -160,10 +169,14 @@ To use the PRS pipeline, you need to edit the STREAM-PRS.bash file. Below you wi
 
 #### Gene-set settings
 
-- MSigDB:
-- GTF:
-- pad5:
-- pad3:
+- MSigDB: fill in the full path to the gene set file, which must include gene set names, source (e.g., URL or database name), and the associated genes \
+  *Optional – leave blank if not using gene sets.* \
+  *Note: make sure the file ends with a newline!*
+- GTF: fill in the full path to the GTF file containing gene boundary annotations (genomic coordinates of genes) \
+  *Optional – used to map SNPs to genes via genomic position*
+- pad5: fill in the padding upstream (5' end) of the gene, in kilobases (kb) \
+  Example: pad5="5" adds 5 kb upstream of the gene start when assigning SNPs to genes
+- pad3: fill in the padding downstream (3' end) of the gene, in kilobases (kb)
 
 #### Cores
 
