@@ -1,4 +1,4 @@
-# STREAM-PRS
+# STREAM-PRS GSx
 STREAM-PRS (**S**treamlined **T**oolkit for **R**eliable **E**valuation and **A**nalysis of **M**ultiple **P**olygenic **R**isk **S**cores) is a streamlined pipeline for calculating polygenic risk scores (PRS). It performs:
 1. Basic editing of GWAS summary statistics
 2. Calculation of PRS with the following tools: PRSice-2, PRS-CS, LDpred2, lassosum and lassosum2.
@@ -90,6 +90,7 @@ To use the PRS pipeline, you need to edit the STREAM-PRS.bash file. Below you wi
 - covariates: fill in nothing if you wish to use no covariates; fill in comma separated list of covariates to include in the regression model
   * e.g. "Age+Sex,Sex" will include results for PHENO ~ PRS + Age+Sex and for PHENO ~ PRS + Sex but NOT for PHENO ~ PRS + Age
   * e.g. "Age,Sex" will include results for PHENO ~ PRS + Age and for PHENO ~ PRS + Sex, but NOT for PHENO ~ PRS + Age + Sex
+- gene_set: fill in either TRUE (yes to calculating PRS for different sets of genes, e.g. biological pathways) or FALSE (no need to calculate PRS for different sets of genes)
 
 #### Output path
 
@@ -156,6 +157,13 @@ To use the PRS pipeline, you need to edit the STREAM-PRS.bash file. Below you wi
 - cov_file: fill in the full path to the file containing the covariates you would like to include in the regression model for the best PRS
 
 *Note: this file should be in the following format: FID IID Cov_1 Cov_2 ... Cov_X Do not included PCs here!*
+
+#### Gene-set settings
+
+- MSigDB:
+- GTF:
+- pad5:
+- pad3:
 
 #### Cores
 
