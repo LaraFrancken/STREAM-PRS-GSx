@@ -21,7 +21,7 @@ It performs:
 First, clone the repository as follows:
 
 ```
-git clone https://github.com/SaraBecelaere/STREAM-PRS.git
+git clone https://github.com/LaraFrancken/STREAM-PRS-GSx.git
 ```
 
 Next, we will install the conda environment. See [here](https://docs.anaconda.com/miniconda/install/) to find instructions on how to install miniconda if you haven't already. Go to the `conda_env` folder and install the conda environment.
