@@ -296,4 +296,4 @@ If you use STREAM-PRS, please cite our paper. Becelaere S., Abakkouy Y. et al. S
 
 ## Contact
 
-For questions or problems when running STREAM-PRS, please leave a message on GitHub or send an email to sara.becelaere@kuleuven.be.
+For questions or problems when running STREAM-PRS GSx, please leave a message on GitHub or send an email to sara.becelaere@kuleuven.be (STREAM-PRS) or lara.francken@student.kuleuven.be (gene-set extension).
