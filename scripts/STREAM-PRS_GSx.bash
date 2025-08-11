@@ -15,7 +15,7 @@ covariates="" #Comma separated list of covariates to include in regression model
 gene_set="FALSE" #(TRUE=yes, FALSE=no)
 
 #Output path
-out=""
+out="."
 
 #GWAS summary statistics
 #If chr_pos_ID and rsID are in the same file, fill in the same GWAS twice
