@@ -196,7 +196,7 @@ fi
 
 #Run LDPred-2 and lassosum2 on every gene set
 if [ "$gene_set" == "TRUE" ]; then
-    Rscript LDpred2_and_lasso2_on_set.r "$edited_GWAS_for_LDpred2" "$training_file_prefix" "$training_file_rsID" "$test_file_prefix" "$test_file_rsID" "$rsID_col" "$chromosome_col" "$pos_col" "$effect_allele" "$noneffect_allele" "$N_col" "$beta_se_col" "$allele_freq_col" "$out_LDpred2_on_set" "$out_lasso2_on_set" "$ldref_hm3_plus" "$cores" "$out_SNPs_per_set" "$out_comparison" "$lambda_min_ratio"   
+    Rscript LDpred2_and_lasso2_on_set.r "$edited_GWAS_for_LDpred2" "$training_file_rsID_prefix" "$training_file_rsID" "$test_file_rsID_prefix" "$test_file_rsID" "$rsID_col" "$chromosome_col" "$pos_col" "$effect_allele" "$noneffect_allele" "$N_col" "$beta_se_col" "$allele_freq_col" "$out_LDpred2_on_set" "$out_lasso2_on_set" "$ldref_hm3_plus" "$cores" "$out_SNPs_per_set" "$out_comparison" "$lambda_min_ratio"   
 fi
 
 #Get best gene set
