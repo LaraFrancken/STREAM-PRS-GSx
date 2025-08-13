@@ -218,17 +218,17 @@ To use the PRS pipeline, you need to edit the STREAM-PRS.bash file. Below you wi
 - nlambda: fill in how many lambda values should be tested (default: 30)
 - lambda_min_ratio: fill in what the minimum ratio between lambda values should be (default: 0.01)
 
-### Run STREAM-PRS
+### Run STREAM-PRS GSx
 
 #### How to run
 
-You can run STREAM-PRS with the following code. Make sure that you adapted the STREAM-PRS.bash file according to your data and folder structures.
+You can run STREAM-PRS GSx with the following code. Make sure that you adapted the STREAM-PRS_GSx.bash file according to your data and folder structures.
 
 ```
-bash STREAM-PRS.bash
+bash STREAM-PRS_GSx.bash
 ```
 
-#### Structure of STREAM-PRS.bash script
+#### Structure of STREAM-PRS_GSx.bash script
 
 The file starts with all the parameters that should be filled in (see above). Then, it runs the following scripts sequentially:
 
@@ -241,6 +241,17 @@ The file starts with all the parameters that should be filled in (see above). Th
 
 
 *Note: if some files give 'Permission denied' errors try using chmod + file to change the file permissions*
+
+
+If `gene_set="TRUE"`, the following additional scripts will run sequentially to perform set-specific PRS analysis:
+
+- `get_SNPs_per_set.bash`: extracts SNPs per gene set using the gene set file (MSigDB), gene boundaries from the GTF file, and custom upstream/downstream padding
+- `PRSet.bash`: runs PRSet
+- `PRSice_on_set.bash`:
+- `lassosum_on_set.bash`
+- `PRScs_on_set.bash`
+- `LDpred2_and_lasso2_on_set.r`
+- `get_best_set.r` **OR** `get_best_set_linear.r` (depending on if the phenotype is indicated to be binary or not): PC-corrects and standardizes all gene-set PRS, performs regression analysis, and generates multiset bar plots, radar charts, and correlation plots summarizing the results.
 
 #### Note on LDpred2 and lassosum2
 
