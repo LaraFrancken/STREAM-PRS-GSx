@@ -246,11 +246,12 @@ The file starts with all the parameters that should be filled in (see above). Th
 If `gene_set="TRUE"`, the following additional scripts will run sequentially to perform set-specific PRS analysis:
 
 - `get_SNPs_per_set.bash`: extracts SNPs per gene set using the gene set file (MSigDB), gene boundaries from the GTF file, and custom upstream/downstream padding
+- `get_SNPs_per_set_rs.py`: extracts SNPs per gene set using rsIDs
 - `PRSet.bash`: runs PRSet
-- `PRSice_on_set.bash`:
-- `lassosum_on_set.bash`
-- `PRScs_on_set.bash`
-- `LDpred2_and_lasso2_on_set.r`
+- `PRSice_on_set.bash`: runs PRSice-2 on each gene set
+- `lassosum_on_set.bash`: runs lassosum on each gene set
+- `PRScs_on_set.bash`: runs PRS-CS on each gene set
+- `LDpred2_and_lasso2_on_set.r`: runs LDpred2 and lassosum2 on each gene set
 - `get_best_set.r` **OR** `get_best_set_linear.r` (depending on if the phenotype is indicated to be binary or not): PC-corrects and standardizes all gene-set PRS, performs regression analysis, and generates multiset bar plots, radar charts, and correlation plots summarizing the results.
 
 #### Note on LDpred2 and lassosum2
