@@ -302,6 +302,22 @@ FID     IID     score                   Tool    parameters
 - Summary_AUC_per_tool.txt: contains for the best parameter settings per tool the AUC and it's 95% confidence interval (CI_low and CI_up)
 - ROC_comparison.svg: ROC plot with one curve per tool
 
+### Output files gene-set extension
+- Raw scores for the training and the test data per gene set
+- PC-corrected and standardized scores for the training (training_prefix_scaled_scores) and test data (test_prefix_scaled_scores) per gene set
+- Regression_results_Tool: contains for each gene set the Beta, standard error (SE), P_value, Odds ratio (OR), confidence interval (CI_low and CI_up), variance explained according to Nagelkerke R² (R2), variance explained according to Cox-Snell R² (R2_Cox), and AUC from cross-validation (AUC_CV, if cross-validation was set to TRUE). Example for PRSet:
+```
+Tool	Parameters	    Beta	            SE	                P_value                	OR	                CI_low	            CI_up	            R2	                R2_Cox	            AUC_CV
+PRSice	Base_0.01	    0.73440454287855	0.0417440682380567	2.78587750147526e-69	2.08424054705138	1.92210942629455	2.26396453419045	0.140131953988692	0.0896626688417195	0.709499328316641
+PRSice	Innate_0.01	    0.362780893955707	0.0386720359090992	6.5373593061829e-21	    1.43732089904106	1.33291401939319	1.55115229928762	0.0367819561578096	0.023534734658695	0.603763353631732
+PRSice	Adaptive_0.01	0.242551480917724	0.0396055650650305	9.11536633416813e-10	1.27449685974253	1.17952786737902	1.37768829346563	0.0153448588538308	0.00981832450538001	0.569193029442121
+PRSice	ER_Stress_0.01	0.331747498329115	0.0399887680117729	1.07660155610481e-16	1.39340096801654	1.28878061058451	1.5075596080417	    0.0285082486499933  0.0182408478951775	0.595539603720471
+```
+- Regression_results_tool_covariates (only if covariates were provided): contains per set and tool the R2_PRS_and_cov (R² obtained for regression model using PRS and covariates) , R2_cov_only (R² obtained for regression model using covariates only (no PRS)), R2_PRS_only (R² obtained from regression model using PRS only (no covariates)) and included_covariates (which covariates were used in the regression model)
+- multiset_bar_plot_R2_tool.svg:
+- radar_chart_cases_vs_controls_PRSet.svg (for binary traits only):
+- correlation_tool.svg and correlation_cases_tool.svg:
+
 ## Citation
 Use of this software in any published work must be acknowledged by citing the relevant reference(s) below:
 - For the original STREAM-PRS: \
