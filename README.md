@@ -28,7 +28,7 @@ Next, we will install the conda environment. See [here](https://docs.anaconda.co
 
 ```
 cd conda_env
-conda env create -f STREAM-PRS.yml
+conda env create -f STREAM-PRS_GSx.yml
 ``` 
 
 To activate the conda environment use:
