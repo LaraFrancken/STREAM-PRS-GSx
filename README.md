@@ -247,7 +247,7 @@ The file starts with all the parameters that should be filled in (see above). Th
 If `gene_set="TRUE"`, the following additional scripts will run sequentially to perform set-specific PRS analysis:
 
 - `get_SNPs_per_set.bash`: extracts SNPs per gene set using the gene set file (MSigDB), gene boundaries from the GTF file, and custom upstream/downstream padding
-- `get_SNPs_per_set_rs.py`: extracts SNPs per gene set using rsIDs
+- `get_SNPs_per_set_rs.py`: extracts SNPs per gene set using rsIDs, this script uses the supporting script `performance.py`
 - `PRSet.bash`: runs PRSet
 - `PRSice_on_set.bash`: runs PRSice-2 on each gene set
 - `lassosum_on_set.bash`: runs lassosum on each gene set
