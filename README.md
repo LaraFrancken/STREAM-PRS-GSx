@@ -34,7 +34,7 @@ conda env create -f STREAM-PRS_GSx.yml
 To activate the conda environment use:
 
 ```
-conda activate STREAM-PRS
+conda activate STREAM-PRS_GSx
 ```
 
 ### Install tools and download necessary files
