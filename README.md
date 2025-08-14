@@ -177,6 +177,7 @@ To use the PRS pipeline, you need to edit the STREAM-PRS.bash file. Below you wi
 - pad5: fill in the padding upstream (5' end) of the gene, in kilobases (kb) \
   Example: pad5="5" adds 5 kb upstream of the gene start when assigning SNPs to genes
 - pad3: fill in the padding downstream (3' end) of the gene, in kilobases (kb)
+- base: fill in either TRUE (create an additional set called “Base” containing all SNPs from all gene sets combined) or FALSE (do not create a “Base” set)
 
 #### Cores
 
