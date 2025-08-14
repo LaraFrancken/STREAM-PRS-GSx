@@ -352,7 +352,7 @@ if (file.exists(paste0(out_PRSet, "/", test_prefix, ".all_score"))) {
       SE <- coef(summary(alpha))[2,2]
       model <- train(as.formula(tip_2), data=PRS_test_PRSet_pheno, method="glm", trControl=train_control, metric="ROC")
       AUC_CV <- (model$results$ROC)
-      Regression_results_PRSet <- rbind(Regression_results_PRSet, c("PRSice",thresh,beta,SE,p,OR,CI,R2_full,R2_Cox,AUC_CV))
+      Regression_results_PRSet <- rbind(Regression_results_PRSet, c("PRSet",thresh,beta,SE,p,OR,CI,R2_full,R2_Cox,AUC_CV))
       colnames(Regression_results_PRSet) <- c("Tool","Parameters", "Beta", "SE", "P_value", "OR", "CI_low", "CI_up", "R2", "R2_Cox","AUC_CV")
     }
   
