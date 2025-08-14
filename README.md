@@ -303,8 +303,11 @@ FID     IID     score                   Tool    parameters
 - ROC_comparison.svg: ROC plot with one curve per tool
 
 ## Citation
-
-If you use STREAM-PRS, please cite our paper. Becelaere S., Abakkouy Y. et al. STREAM-PRS: A multi-tool pipeline for streamlining Polygenic Risk Score computation (2025). Currently, the paper is not yet published.
+Use of this software in any published work must be acknowledged by citing the relevant reference(s) below:
+- For the original STREAM-PRS: \
+  Becelaere S., Abakkouy Y. et al. STREAM-PRS: A multi-tool pipeline for streamlining Polygenic Risk Score computation (2025). Currently, the paper is not yet published.
+- For the gene-set extension (STREAM-PRS GSx): \
+  Francken L., et al. STREAM-PRS GSx: Biologically informed gene-set polygenic risk scoring. Version 1.0. KU Leuven, 2025. Available at: https://github.com/LaraFrancken/STREAM-PRS-GSx
 
 ## Contact
 
