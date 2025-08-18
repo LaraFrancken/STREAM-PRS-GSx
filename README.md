@@ -341,4 +341,4 @@ Use of this software in any published work must be acknowledged by citing the re
 
 ## Contact
 
-For questions or problems when running STREAM-PRS GSx, please leave a message on GitHub or send an email to sara.becelaere@kuleuven.be (STREAM-PRS) or lara.francken@student.kuleuven.be (gene-set extension).
+For questions or problems when running STREAM-PRS GSx, please leave a message on GitHub or send an email to sara.becelaere@kuleuven.be (STREAM-PRS) or lara.francken@kuleuven.be (gene-set extension).
