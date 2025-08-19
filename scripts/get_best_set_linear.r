@@ -326,16 +326,32 @@ if (file.exists(paste0(out_PRSet, "/", test_prefix, ".all_score"))) {
 
   #### Multiset bar plot
   ## Calculate -log10(P) and filter out unnecessary rows if needed
-  prs_top <- Regression_results_PRSet %>%
+  if (cross_validation=="FALSE"){
+    prs_top <- Regression_results_PRSet %>%
     mutate(Threshold = gsub(".*_([^_]+)$", "\\1", Parameters)) %>%
     mutate(Parameters = gsub("_([^_]+)$", "", Parameters)) %>%
     mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
     arrange(desc(R2)) %>%                   # Order by variance explained
     head(7)                                 # Top 7
+  } else if (cross_validation=="TRUE"){    
+    prs_top <- Regression_results_PRSet %>%
+    mutate(Threshold = gsub(".*_([^_]+)$", "\\1", Parameters)) %>%
+    mutate(Parameters = gsub("_([^_]+)$", "", Parameters)) %>%
+    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+    arrange(desc(R2_CV)) %>%                   # Order by variance explained
+    head(7)                                 # Top 7
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   ## Make multiset bar plot
-  multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_PRSet, "/multiset_bar_plot_R2_PRSet.svg"))
-
+  if (cross_validation=="FALSE"){  
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_PRSet, "/multiset_bar_plot_R2_PRSet.svg"))  
+  } else if (cross_validation=="TRUE"){     
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2_CV", logP="log", out=paste0(out_PRSet, "/multiset_bar_plot_R2_PRSet.svg"))
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
   #### Correlation plot
   # Extract the columns data
   pathway_columns <- grep("_res_sc$", colnames(PRS_test_PRSet_pheno), value = TRUE)
@@ -535,15 +551,32 @@ if (file.exists(paste0(out_PRSice_on_Set, "/", test_prefix, ".all_score"))) {
 
   #### Multiset bar plot
   ## Calculate -log10(P) and filter out unnecessary rows if needed
-  prs_top <- Regression_results_PRSice %>%
-    mutate(Threshold = gsub(".*_([^_]+)$", "\\1", Parameters)) %>%
-    mutate(Parameters = gsub("_Pt.*$", "", Parameters)) %>%
-    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
-    arrange(desc(R2)) %>%                   # Order by variance explained
-    head(7)                                 # Top 7
+  if (cross_validation=="FALSE"){
+    prs_top <- Regression_results_PRSice %>%
+      mutate(Threshold = gsub(".*_([^_]+)$", "\\1", Parameters)) %>%
+      mutate(Parameters = gsub("_Pt.*$", "", Parameters)) %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      arrange(desc(R2)) %>%                   # Order by variance explained
+      head(7)                                 # Top 7
+  } else if (cross_validation=="TRUE"){    
+      prs_top <- Regression_results_PRSice %>%
+      mutate(Threshold = gsub(".*_([^_]+)$", "\\1", Parameters)) %>%
+      mutate(Parameters = gsub("_Pt.*$", "", Parameters)) %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      arrange(desc(R2_CV)) %>%                # Order by variance explained
+      head(7)
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   ## Make multiset bar plot
-  multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_PRSice_on_Set, "/multiset_bar_plot_R2_PRSice.svg"))
+  if (cross_validation=="FALSE"){
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_PRSice_on_Set, "/multiset_bar_plot_R2_PRSice.svg"))
+  } else if (cross_validation=="TRUE"){  
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2_CV", logP="log", out=paste0(out_PRSice_on_Set, "/multiset_bar_plot_R2_PRSice.svg"))
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   #### Correlation plot
   # Extract the columns data
@@ -783,14 +816,28 @@ if (file.exists(file.path(out_lassosum_on_set, "gene_sets.txt"))) {
 
   #### Multiset bar plot
   ## Calculate -log10(P) and filter out unnecessary rows if needed
-  prs_top <- Regression_results_lasso %>%
-    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
-    arrange(desc(R2)) %>%                   # Order by variance explained
-    head(7)                                 # Top 7
-
-  print(prs_top)
+  if (cross_validation=="FALSE"){
+    prs_top <- Regression_results_lasso %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      arrange(desc(R2)) %>%                   # Order by variance explained
+      head(7)                                 # Top 7
+  } else if (cross_validation=="TRUE"){    
+    prs_top <- Regression_results_lasso %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      arrange(desc(R2_CV)) %>%                # Order by variance explained
+      head(7)                                 # Top 7
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
+  
   ## Make multiset bar plot
-  multiset_barplot(data=prs_top, Parameters="Set", R2="R2", logP="log", out=paste0(out_lassosum_on_set, "/multiset_bar_plot_R2_lasso.svg"))
+  if (cross_validation=="FALSE"){    
+    multiset_barplot(data=prs_top, Parameters="Set", R2="R2", logP="log", out=paste0(out_lassosum_on_set, "/multiset_bar_plot_R2_lasso.svg"))
+  } else if (cross_validation=="TRUE"){    
+    multiset_barplot(data=prs_top, Parameters="Set", R2="R2_CV", logP="log", out=paste0(out_lassosum_on_set, "/multiset_bar_plot_R2_lasso.svg"))
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   #### Correlation plot
   ## Create file with all scaled scores and pheno data using data_frames_test
@@ -1025,14 +1072,28 @@ if (length(list.files(out_PRScs_on_set)) > 0) {
 
   #### Multiset bar plot
   ## Calculate -log10(P) and filter out unnecessary rows if needed
-  prs_top <- Regression_results_PRS_CS %>%
-    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
-    arrange(desc(R2)) %>%                   # Order by variance explained
-    head(7)                                 # Top 7
+  if (cross_validation=="FALSE"){
+    prs_top <- Regression_results_PRS_CS %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      arrange(desc(R2)) %>%                   # Order by variance explained
+      head(7)                                 # Top 7
+  } else if (cross_validation=="TRUE"){  
+    prs_top <- Regression_results_PRS_CS %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      arrange(desc(R2_CV)) %>%                   # Order by variance explained
+      head(7)                                 # Top 7
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
-  print(prs_top)
   ## Make multiset bar plot
-  multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_PRScs_on_set, "/multiset_bar_plot_R2_PRS-CS.svg"))
+  if (cross_validation=="FALSE"){    
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_PRScs_on_set, "/multiset_bar_plot_R2_PRS-CS.svg"))
+  } else if (cross_validation=="TRUE"){   
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2_CV", logP="log", out=paste0(out_PRScs_on_set, "/multiset_bar_plot_R2_PRS-CS.svg"))
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   #### Correlation plot
   # Extract the columns data
@@ -1661,15 +1722,30 @@ if (length(list.files(out_LDpred2_on_set)) > 0) {
     model_name = "auto"
   }
 
-
-  prs_top <- Regression_results_LDpred2 %>%
-  mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
-  mutate(Parameters = gsub("_res_sc", "", Parameters)) %>%
-  arrange(desc(R2)) %>%                   # Order by variance explained
-  head(7)                                 # Top 7
+  if (cross_validation=="FALSE"){
+    prs_top <- Regression_results_LDpred2 %>%
+    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+    mutate(Parameters = gsub("_res_sc", "", Parameters)) %>%
+    arrange(desc(R2)) %>%                   # Order by variance explained
+    head(7)   
+  } else if (cross_validation=="TRUE"){    
+    prs_top <- Regression_results_LDpred2 %>%
+    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+    mutate(Parameters = gsub("_res_sc", "", Parameters)) %>%
+    arrange(desc(R2_CV)) %>%                   # Order by variance explained
+    head(7)                                 # Top 7
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   ## Make multiset bar plot
-  multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_LDpred2_on_set, "/multiset_bar_plot_R2_LDpred2_", model_name, ".svg"))
+  if (cross_validation=="FALSE"){
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_LDpred2_on_set, "/multiset_bar_plot_R2_LDpred2_", model_name, ".svg"))
+  } else if (cross_validation=="TRUE"){      
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2_CV", logP="log", out=paste0(out_LDpred2_on_set, "/multiset_bar_plot_R2_LDpred2_", model_name, ".svg"))
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   #### Correlation plot
   if (model_type == "INF model") {PRS_LDpred2_for_regression = PRS_inf_for_regression}
@@ -1881,15 +1957,30 @@ if (length(list.files(out_lasso2_on_set)) > 0) {
 
   #### Multiset bar plot
   ## Calculate -log10(P) and filter out unnecessary rows if needed
-  prs_top <- Regression_results_lasso2 %>%
-    mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
-    mutate(Parameters = gsub("_res_sc", "", Parameters)) %>%
-    arrange(desc(R2)) %>%                   # Order by variance explained
-    head(7)                                 # Top 7
+  if (cross_validation=="FALSE"){
+    prs_top <- Regression_results_lasso2 %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      mutate(Parameters = gsub("_res_sc", "", Parameters)) %>%
+      arrange(desc(R2)) %>%                   # Order by variance explained
+      head(7)                                 # Top 7
+  } else if (cross_validation=="TRUE"){    
+    prs_top <- Regression_results_lasso2 %>%
+      mutate(logP = -log10(P_value)) %>%      # Create -log10(P) column
+      mutate(Parameters = gsub("_res_sc", "", Parameters)) %>%
+      arrange(desc(R2_CV)) %>%                # Order by variance explained
+      head(7)                                 # Top 7
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
-  print(prs_top)
   ## Make multiset bar plot
-  multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_lasso2_on_set, "/multiset_bar_plot_R2_lasso2.svg"))
+  if (cross_validation=="FALSE"){
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2", logP="log", out=paste0(out_lasso2_on_set, "/multiset_bar_plot_R2_lasso2.svg"))
+  } else if (cross_validation=="TRUE"){    
+    multiset_barplot(data=prs_top, Parameters="Parameters", R2="R2_CV", logP="log", out=paste0(out_lasso2_on_set, "/multiset_bar_plot_R2_lasso2.svg"))
+  } else {
+    "Fill in TRUE or FALSE for cross-validation"
+  }
 
   #### Correlation plot
   # Extract the columns data
