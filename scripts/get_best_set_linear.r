@@ -382,9 +382,8 @@ if (file.exists(paste0(out_PRSet, "/", test_prefix, ".all_score"))) {
         colnames(Regression_covariates_PRSet) <- c("Tool", "Parameters", "R2_PRS_and_cov" , "R2_cov_only", "R2_PRS_only", "included_covariates")
       }
     }
+    write.table(Regression_covariates_PRSet, paste0(out_PRSet, "/Regression_results_PRSet_covariates"), row.names=F, quote=F, sep="\t")
   }
-
-  write.table(Regression_covariates_PRSet, paste0(out_PRSet, "/Regression_results_PRSet_covariates"), row.names=F, quote=F, sep="\t")
 
   cat("Done getting best set for PRSet.... PRSice....\n")
 
@@ -609,9 +608,8 @@ if (file.exists(paste0(out_PRSice_on_Set, "/", test_prefix, ".all_score"))) {
         colnames(Regression_covariates_PRSice) <- c("Tool", "Parameters", "R2_PRS_and_cov" , "R2_cov_only", "R2_PRS_only", "included_covariates")
       }
     }
+    write.table(Regression_covariates_PRSice, paste0(out_PRSice_on_Set, "/Regression_results_PRSice_covariates"), row.names=F, quote=F, sep="\t")
   }
-
-  write.table(Regression_covariates_PRSice, paste0(out_PRSice_on_Set, "/Regression_results_PRSice_covariates"), row.names=F, quote=F, sep="\t")
 
 
   cat("Done getting best set for PRSice.... lassosum....\n")
@@ -899,9 +897,8 @@ if (file.exists(file.path(out_lassosum_on_set, "gene_sets.txt"))) {
         }
       }
     }
+    write.table(Regression_covariates_lasso, paste0(out_lassosum_on_set, "/Regression_results_lasso_covariates"), row.names=F, quote=F, sep="\t")
   }
-
-  write.table(Regression_covariates_lasso, paste0(out_lassosum_on_set, "/Regression_results_lasso_covariates"), row.names=F, quote=F, sep="\t")
 
 
   cat("Done getting best set for lassosum.... PRS-CS....\n")
@@ -1124,9 +1121,8 @@ if (length(list.files(out_PRScs_on_set)) > 0) {
         colnames(Regression_covariates_PRS_CS) <- c("Tool", "Parameters", "R2_PRS_and_cov" , "R2_cov_only", "R2_PRS_only", "included_covariates")
       }
     }
+    write.table(Regression_covariates_PRS_CS, paste0(out_PRScs_on_set, "/Regression_results_PRScs_covariates"), row.names=F, quote=F, sep="\t")
   }
-
-  write.table(Regression_covariates_PRS_CS, paste0(out_PRScs_on_set, "/Regression_results_PRScs_covariates"), row.names=F, quote=F, sep="\t")
 
 
   cat("Done getting best set for PRS-CS.... LDpred2....\n")
@@ -1786,9 +1782,8 @@ if (length(list.files(out_LDpred2_on_set)) > 0) {
         colnames(Regression_covariates_LDpred2) <- c("Tool", "Parameters", "R2_PRS_and_cov" , "R2_cov_only", "R2_PRS_only", "included_covariates")
       }
     }
+    write.table(Regression_covariates_LDpred2, paste0(out_LDpred2_on_set, "/Regression_results_LDpred2_covariates"), row.names=F, quote=F, sep="\t")
   }
-
-  write.table(Regression_covariates_LDpred2, paste0(out_LDpred2_on_set, "/Regression_results_LDpred2_covariates"), row.names=F, quote=F, sep="\t")
 
   cat("Done getting best PRS for LDpred2.... lassosum2....\n")
 
@@ -2011,9 +2006,8 @@ if (length(list.files(out_lasso2_on_set)) > 0) {
         colnames(Regression_covariates_lasso2) <- c("Tool", "Parameters", "R2_PRS_and_cov" , "R2_cov_only", "R2_PRS_only", "included_covariates")
       }
     }
+    write.table(Regression_covariates_lasso2, paste0(out_lasso2_on_set, "/Regression_results_lassosum2_covariates"), row.names=F, quote=F, sep="\t")
   }
-
-  write.table(Regression_covariates_lasso2, paste0(out_lasso2_on_set, "/Regression_results_lassosum2_covariates"), row.names=F, quote=F, sep="\t")
 
 
   cat("Done getting best set for lassosum2...\n")
