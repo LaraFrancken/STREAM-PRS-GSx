@@ -54,11 +54,11 @@ nlambda <- as.numeric(nlambda)
 min_ratio <- args[23]
 min_ratio <- as.numeric(min_ratio)
 
+map_path <- args[24]
+
 cat("Starting LDpred2...\n")
 
-map <- readRDS(runonce::download_file(
-  "https://figshare.com/ndownloader/files/37802721",
-  dir = paste0(out_LDpred2, "/tmp-data"), fname = "map_hm3_plus.rds"))
+map <- readRDS(paste0(map_path))
 
 sumstats <- bigreadr::fread2(ss)
 sumstats$chr <- as.numeric(pull(sumstats, CHR_col))
@@ -337,5 +337,6 @@ write.table(pred_lasso_withcolnames_training, paste0(out_lasso2, "/pred_lasso2_"
 write.table(pred_lasso_withcolnames_test, paste0(out_lasso2, "/pred_lasso2_", test_prefix), row.names = F, quote = F, sep="\t")
 
 cat("Lassosum2 completed!\n")
+
 
 
