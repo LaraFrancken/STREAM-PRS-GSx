@@ -336,7 +336,7 @@ AUC	                CI_low	            CI_up	            Tool
 ## Citation
 Use of this software in any published work must be acknowledged by citing the relevant reference(s) below:
 - For the original STREAM-PRS: \
-  Becelaere S., Abakkouy Y. et al. STREAM-PRS: A multi-tool pipeline for streamlining Polygenic Risk Score computation (2025). Currently, the paper is not yet published.
+  Becelaere, S., Abakkouy, Y. et al. STREAM-PRS: a multi-tool pipeline for streamlining polygenic risk score computation. Genome Med 17, 119 (2025). https://doi.org/10.1186/s13073-025-01539-0
 - For the gene-set extension (STREAM-PRS GSx): \
   Francken L., et al. STREAM-PRS GSx: Biologically informed gene-set polygenic risk scoring. Version 1.0. KU Leuven, 2025. Available at: https://github.com/LaraFrancken/STREAM-PRS-GSx
 
