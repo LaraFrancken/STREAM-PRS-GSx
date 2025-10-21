@@ -70,15 +70,11 @@ best_lambda <- as.numeric(strsplit(lassosum2_row$Parameters, "_")[[1]][4])
 min_ratio <- args[20]
 min_ratio <- as.numeric(min_ratio)
 
+map_path <- args[21]
+
 cat("Starting LDpred2...\n")
 
-# map <- readRDS(runonce::download_file(
-#   "https://figshare.com/ndownloader/files/37802721",
-#   dir = paste0(out_LDpred2, "/tmp-data"), fname = "map_hm3_plus.rds"))
-
-# Aanpassing error later oplossen
-file_path <- file.path(paste0(out_LDpred2, "/tmp-data"), "map_hm3_plus.rds")
-map <- readRDS(file_path)
+map <- readRDS(paste0(map_path))
   
 sumstats <- bigreadr::fread2(ss)
 sumstats$chr <- as.numeric(pull(sumstats, CHR_col))
