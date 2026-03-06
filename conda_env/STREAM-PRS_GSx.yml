@@ -1,4 +1,4 @@
-name: PRS_pipeline
+name: STREAM-PRS_GSx
 channels:
   - anaconda
   - bioconda
@@ -488,4 +488,4 @@ dependencies:
       - pytz==2025.1
       - six==1.17.0
       - tzdata==2025.1
-prefix: /data/leuven/359/vsc35921/miniconda3/envs/PRS_pipeline
+prefix: ./miniconda3/envs/STREAM-PRS_GSx.yml
